@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Loan Calc — Free Loan &amp; Mortgage Calculator with Amortization | S3eidat Tools</title>
+<meta name="description" content="Monthly payment, total interest, payoff date and a full amortization schedule for any loan or mortgage. Extra payments, chart, CSV export. Free and private.">
+<meta property="og:title" content="Loan Calc — free, private loan calculator">
+<meta property="og:description" content="Monthly payment and full amortization table. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="loan-calc">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Loan Calc</h1>
+    <p>Monthly payment, total interest and the full amortization schedule for any loan or mortgage. Add an extra monthly payment to see how much sooner you are debt-free.</p>
+  </section>
+
+  <div class="lc-grid">
+    <section class="card stack">
+      <h2>Your loan</h2>
+      <label class="field">Loan amount
+        <input class="input" id="amount" inputmode="decimal" autocomplete="off" placeholder="250,000">
+      </label>
+      <label class="field">Annual interest rate
+        <span class="adorn"><input class="input" id="rate" inputmode="decimal" autocomplete="off" placeholder="6.5"><i>%</i></span>
+      </label>
+      <div class="field">
+        <label for="term">Term</label>
+        <div class="row nowrap">
+          <input class="input grow" id="term" inputmode="numeric" autocomplete="off" placeholder="30">
+          <div class="seg" id="unit" role="group" aria-label="Term unit">
+            <button type="button" data-v="y" aria-pressed="true">Years</button>
+            <button type="button" data-v="m" aria-pressed="false">Months</button>
+          </div>
+        </div>
+      </div>
+      <label class="field"><span>Extra monthly payment <span class="faint">(optional)</span></span>
+        <input class="input" id="extra" inputmode="decimal" autocomplete="off" placeholder="0">
+      </label>
+      <label class="field">First payment
+        <input class="input" id="start" type="month">
+      </label>
+      <p class="faint" id="err" role="alert"></p>
+    </section>
+
+    <section class="card stack">
+      <div class="row between">
+        <h2>Result</h2>
+        <button class="btn small" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy summary</button>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div id="saved" class="saved" hidden></div>
+      <canvas class="chart" id="chart" role="img" aria-label="Principal and interest paid per year, with remaining balance"></canvas>
+      <div class="legend"><span><i class="k-p"></i>Principal</span><span><i class="k-i"></i>Interest</span><span><i class="k-b"></i>Balance</span></div>
+    </section>
+  </div>
+
+  <section class="card mt">
+    <div class="row between">
+      <h2>Amortization schedule</h2>
+      <div class="row">
+        <div class="seg" id="view" role="group" aria-label="Schedule view">
+          <button type="button" data-v="year" aria-pressed="true">Yearly</button>
+          <button type="button" data-v="month" aria-pressed="false">Monthly</button>
+        </div>
+        <button class="btn small" id="csv"><svg class="i"><use href="#i-download"/></svg>CSV</button>
+      </div>
+    </div>
+    <div class="tbl-wrap sched mt"><table class="tbl" id="table"></table></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

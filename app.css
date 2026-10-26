@@ -1,0 +1,32 @@
+.lc-grid { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 860px) { .lc-grid { grid-template-columns: minmax(0, 1fr); } }
+
+div.field { display: grid; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--text-2); }
+.row.nowrap { flex-wrap: nowrap; }
+.adorn { position: relative; display: block; }
+.adorn .input { padding-right: 34px; }
+.adorn i { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-style: normal; color: var(--text-3); pointer-events: none; }
+#err:empty { display: none; }
+#err { color: var(--danger); margin: 0; }
+
+#stats .stat { container-type: inline-size; }
+#stats .stat b { font-size: min(18px, 13cqi); overflow-wrap: anywhere; }
+#stats .stat.main { grid-column: 1 / -1; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; background: var(--accent-soft); border-color: transparent; }
+#stats .stat.main b { color: var(--accent); font-size: min(34px, 11cqi); }
+#stats .stat.main span { color: var(--text-2); font-size: 13.5px; }
+#stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 520px) { #stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.saved { padding: 10px 14px; border-radius: 12px; background: var(--accent-soft); color: var(--text); font-size: 13.5px; }
+.saved b { color: var(--accent); }
+
+.chart { display: block; width: 100%; height: 230px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12.5px; color: var(--text-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.legend .k-p { background: var(--accent); }
+.legend .k-i { background: var(--coffee); }
+.legend .k-b { background: var(--text-2); height: 2px; vertical-align: 3px; }
+
+.sched { max-height: 460px; overflow: auto; }
+.sched th { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+.tbl .num { text-align: right; white-space: nowrap; }
+.tbl tr.yr td { font-weight: 600; }
